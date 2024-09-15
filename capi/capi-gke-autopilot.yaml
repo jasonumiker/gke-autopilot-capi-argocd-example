@@ -77,7 +77,7 @@ spec:
         namespace: default
         project: default
         sources:
-          - repoURL: https://github.com/jasonumiker/gke-homelab
+          - repoURL: https://github.com/jasonumiker/gke-autopilot-capi-argocd-example
             path: demos
             targetRevision: HEAD
         destination:
