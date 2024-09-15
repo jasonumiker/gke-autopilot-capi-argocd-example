@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: demos
+  namespace: default
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/jasonumiker/gke-homelab
+    targetRevision: HEAD
+    path: demos
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
