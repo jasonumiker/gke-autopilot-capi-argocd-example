@@ -11,3 +11,7 @@ spec:
     path: workloads/demos-dev
     repoURL: https://github.com/jasonumiker/gke-autopilot-capi-argocd-example.git
     targetRevision: multi-cluster
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
