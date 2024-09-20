@@ -4,4 +4,4 @@ metadata:
   name: dept1-dev
 
 resources:
-- ../../demos
+- ../../workloads/demos
