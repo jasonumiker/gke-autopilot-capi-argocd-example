@@ -1,0 +1,134 @@
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  name: prod
+  namespace: dept1
+  labels:
+    name: dept1-prod
+spec:
+  controlPlaneRef:
+    apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+    kind: GCPManagedControlPlane
+    name: prod
+  infrastructureRef:
+    apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+    kind: GCPManagedCluster
+    name: prod
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: GCPManagedCluster
+metadata:
+  name: prod
+  namespace: dept1
+spec:
+  network:
+    name: default
+  project: project-435400
+  region: australia-southeast1
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: GCPManagedControlPlane
+metadata:
+  name: prod
+  namespace: dept1
+spec:
+  location: australia-southeast1
+  project: project-435400
+  enableAutopilot: true
+  releaseChannel: stable
+---
+apiVersion: addons.cluster.x-k8s.io/v1alpha1
+kind: HelmChartProxy
+metadata:
+  name: argocd-prod
+  namespace: dept1
+spec:
+  clusterSelector:
+    matchLabels:
+      name: dept1-prod
+  repoURL: https://argoproj.github.io/argo-helm
+  chartName: argo-cd
+  namespace: argocd
+  valuesTemplate: |
+    server:
+      resources:
+        requests:
+          cpu: 100m
+          memory: 100Mi
+        limits:
+          cpu: 1
+          memory: 1Gi
+    repoServer:
+      resources:
+        requests:
+          cpu: 100m
+          memory: 100Mi
+        limits:
+          cpu: 1
+          memory: 1Gi
+    applicationSet:
+      resources:
+        requests:
+          cpu: 100m
+          memory: 100Mi
+        limits:
+          cpu: 1
+          memory: 1Gi
+    notifications:
+      resources:
+        requests:
+          cpu: 100m
+          memory: 100Mi
+        limits:
+          cpu: 1
+          memory: 1Gi
+    controller:
+      resources:
+        requests:
+          cpu: 100m
+          memory: 100Mi
+        limits:
+          cpu: 1
+          memory: 1Gi
+  options:
+    waitForJobs: true
+    wait: true
+    timeout: 5m
+    install:
+      createNamespace: true
+---
+apiVersion: addons.cluster.x-k8s.io/v1alpha1
+kind: HelmChartProxy
+metadata:
+  name: cluster-workloads-prod
+  namespace: dept1
+spec:
+  clusterSelector:
+    matchLabels:
+      name: dept1-prod
+  repoURL: https://argoproj.github.io/argo-helm
+  chartName: argocd-apps
+  valuesTemplate: |
+    applications:
+      demos:
+        namespace: argocd
+        finalizers:
+        - resources-finalizer.argocd.argoproj.io
+        project: default
+        sources:
+          - repoURL: https://github.com/jasonumiker/gke-autopilot-capi-argocd-example.git
+            path: cluster-workloads/dept1-prod
+            targetRevision: multi-cluster
+        destination:
+          server: https://kubernetes.default.svc
+          namespace: dept1
+        syncPolicy:
+          automated:
+            prune: true
+            selfHeal: false
+  options:
+    waitForJobs: true
+    wait: true
+    timeout: 5m
+    install:
+      createNamespace: true
