@@ -1,25 +1,25 @@
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: Cluster
 metadata:
-  name: capi-gke
-  namespace: default
+  name: dev
+  namespace: dept1
   labels:
-    argoCDChart: enabled
+    name: dept1-dev
 spec:
   controlPlaneRef:
     apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
     kind: GCPManagedControlPlane
-    name: capi-gke-control-plane
+    name: dev
   infrastructureRef:
     apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
     kind: GCPManagedCluster
-    name: capi-gke
+    name: dev
 ---
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: GCPManagedCluster
 metadata:
-  name: capi-gke
-  namespace: default
+  name: dev
+  namespace: dept1
 spec:
   network:
     name: default
@@ -29,8 +29,8 @@ spec:
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: GCPManagedControlPlane
 metadata:
-  name: capi-gke-control-plane
-  namespace: default
+  name: dev
+  namespace: dept1
 spec:
   location: australia-southeast1
   project: project-435400
@@ -40,11 +40,12 @@ spec:
 apiVersion: addons.cluster.x-k8s.io/v1alpha1
 kind: HelmChartProxy
 metadata:
-  name: argocd
+  name: argocd-dev
+  namespace: dept1
 spec:
   clusterSelector:
     matchLabels:
-      argoCDChart: enabled
+      name: dept1-dev
   repoURL: https://argoproj.github.io/argo-helm
   chartName: argo-cd
   namespace: argocd
@@ -99,27 +100,28 @@ spec:
 apiVersion: addons.cluster.x-k8s.io/v1alpha1
 kind: HelmChartProxy
 metadata:
-  name: demos
+  name: argocd-apps-dept1-dev
+  namespace: dept1
 spec:
   clusterSelector:
     matchLabels:
-      argoCDChart: enabled
+      name: dept1-dev
   repoURL: https://argoproj.github.io/argo-helm
   chartName: argocd-apps
   valuesTemplate: |
     applications:
-      demos:
+      argocd-apps:
         namespace: argocd
         finalizers:
         - resources-finalizer.argocd.argoproj.io
         project: default
         sources:
           - repoURL: https://github.com/jasonumiker/gke-autopilot-capi-argocd-example.git
-            path: demos
+            path: cluster-workloads/dept1-dev
             targetRevision: HEAD
         destination:
           server: https://kubernetes.default.svc
-          namespace: default
+          namespace: argocd
         syncPolicy:
           automated:
             prune: true
