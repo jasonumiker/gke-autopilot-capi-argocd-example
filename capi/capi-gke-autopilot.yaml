@@ -48,6 +48,47 @@ spec:
   repoURL: https://argoproj.github.io/argo-helm
   chartName: argo-cd
   namespace: argocd
+  valuesTemplate: |
+    server:
+      resources:
+        requests:
+          cpu: 100m
+          memory: 100Mi
+        limits:
+          cpu: 1
+          memory: 1Gi
+    repoServer:
+      resources:
+        requests:
+          cpu: 100m
+          memory: 100Mi
+        limits:
+          cpu: 1
+          memory: 1Gi
+    applicationSet:
+      resources:
+        requests:
+          cpu: 100m
+          memory: 100Mi
+        limits:
+          cpu: 1
+          memory: 1Gi
+    notifications:
+      resources:
+        requests:
+          cpu: 100m
+          memory: 100Mi
+        limits:
+          cpu: 1
+          memory: 1Gi
+    controller:
+      resources:
+        requests:
+          cpu: 100m
+          memory: 100Mi
+        limits:
+          cpu: 1
+          memory: 1Gi
   options:
     waitForJobs: true
     wait: true
