@@ -100,8 +100,8 @@ spec:
 apiVersion: addons.cluster.x-k8s.io/v1alpha1
 kind: HelmChartProxy
 metadata:
-  name: argocd-apps-dev
-  namespace: argocd
+  name: argocd-apps-dept1-dev
+  namespace: dept1
 spec:
   clusterSelector:
     matchLabels:
