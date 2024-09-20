@@ -119,6 +119,8 @@ spec:
           - repoURL: https://github.com/jasonumiker/gke-autopilot-capi-argocd-example.git
             path: cluster-workloads/dept1-dev
             targetRevision: multi-cluster
+            directory:
+              recurse: true
         destination:
           server: https://kubernetes.default.svc
           namespace: dept1
