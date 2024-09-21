@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/jasonumiker/gke-autopilot-capi-argocd-example
     targetRevision: HEAD
-    path: workloads/demos
+    path: workloads/ingress-demos
   destination:
     server: https://kubernetes.default.svc
     namespace: default
