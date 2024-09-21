@@ -4,6 +4,6 @@ metadata:
   name: dept1-dev-workloads
 
 resources:
-- ../../workloads/argo-rollouts
-- ../../workloads/ingress-demo
-- ../../workloads/argo-rollouts-demo
+- ../../argo-apps/argo-rollouts
+- ../../argo-apps/ingress-demo
+- ../../argo-apps/argo-rollouts-demo

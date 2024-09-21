@@ -119,7 +119,7 @@ spec:
         project: default
         sources:
           - repoURL: https://github.com/jasonumiker/gke-autopilot-capi-argocd-example.git
-            path: cluster-workloads/dept1-dev
+            path: cluster-argo-apps/dept1-dev
             targetRevision: HEAD
         destination:
           server: https://kubernetes.default.svc

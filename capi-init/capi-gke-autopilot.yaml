@@ -115,7 +115,7 @@ spec:
         project: default
         sources:
           - repoURL: https://github.com/jasonumiker/gke-autopilot-capi-argocd-example.git
-            path: workloads/ingress-demos
+            path: app-manifests/ingress-demo
             targetRevision: HEAD
         destination:
           server: https://kubernetes.default.svc
