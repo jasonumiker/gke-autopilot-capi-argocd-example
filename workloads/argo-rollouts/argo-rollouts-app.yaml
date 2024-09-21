@@ -10,8 +10,16 @@ spec:
     targetRevision: 2.37.7
     helm:
       releaseName: argo-rollouts
-      valueFiles:
-      - values.yaml
+      values: |
+        controller:
+          replicas: 1
+          resources:
+            limits:
+              ephemeral-storage: 1Gi
+            requests:
+              cpu: 100m
+              ephemeral-storage: 1Gi
+              memory: 100Mi        
   destination:
     server: "https://kubernetes.default.svc"
     namespace: argocd
