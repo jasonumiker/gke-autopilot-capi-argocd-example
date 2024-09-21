@@ -1,9 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 metadata:
-  name: dept1-dev-workloads
+  name: dept2-dev-workloads
 
 resources:
 - ../../argo-apps/argo-rollouts
 - ../../argo-apps/argo-rollouts-demo
-- ../../argo-apps-ingress-demo

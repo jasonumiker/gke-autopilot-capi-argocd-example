@@ -1,2 +1,0 @@
-gcloud container clusters get-credentials dept1-dev --region australia-southeast1 --project project-435400 \
- && kubectl port-forward --namespace argocd $(kubectl get pod --namespace argocd --selector="app.kubernetes.io/instance=argo-cd-1726886656,app.kubernetes.io/name=argocd-server" --output jsonpath='{.items[0].metadata.name}') 8080:8080
