@@ -6,4 +6,4 @@ metadata:
 resources:
 - ../../argo-apps/argo-rollouts
 - ../../argo-apps/argo-rollouts-demo
-- ../../argo-apps-ingress-demo
+- ../../argo-apps/ingress-demo
