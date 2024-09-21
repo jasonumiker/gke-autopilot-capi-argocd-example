@@ -10,6 +10,8 @@ spec:
     targetRevision: 2.37.7
     helm:
       releaseName: argo-rollouts
+      valuesFiles:
+        - values.yaml
   destination:
     server: "https://kubernetes.default.svc"
     namespace: argocd
