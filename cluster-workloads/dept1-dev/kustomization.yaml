@@ -6,3 +6,4 @@ metadata:
 resources:
 - ../../workloads/argo-rollouts
 - ../../workloads/ingress-demo
+- ../../workloads/argo-rollouts-demo
