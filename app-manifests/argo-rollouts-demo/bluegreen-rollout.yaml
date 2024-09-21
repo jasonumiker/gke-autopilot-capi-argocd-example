@@ -32,3 +32,4 @@ spec:
       autoPromotionEnabled: false
       activeService: bluegreen-demo
       previewService: bluegreen-demo-preview
+      scaleDownDelaySeconds: 300
