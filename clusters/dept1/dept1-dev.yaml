@@ -112,7 +112,7 @@ spec:
   version: 2.0.1
   valuesTemplate: |
     applications:
-      argocd-apps:
+      platform-apps:
         namespace: argocd
         finalizers:
         - resources-finalizer.argocd.argoproj.io
