@@ -48,6 +48,7 @@ spec:
       name: dept1-dev
   repoURL: https://argoproj.github.io/argo-helm
   chartName: argo-cd
+  releaseName: argo-cd
   version: 7.6.1
   namespace: argocd
   valuesTemplate: |
@@ -109,6 +110,7 @@ spec:
       name: dept1-dev
   repoURL: https://argoproj.github.io/argo-helm
   chartName: argocd-apps
+  releaseName: argocd-apps
   version: 2.0.1
   valuesTemplate: |
     applications:
