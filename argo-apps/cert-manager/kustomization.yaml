@@ -4,4 +4,5 @@ metadata:
   name: cert-manager-app
 
 resources:
+- namespace.yaml
 - cert-manager-app.yaml
