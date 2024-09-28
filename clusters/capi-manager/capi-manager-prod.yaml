@@ -34,13 +34,43 @@ metadata:
 spec:
   location: australia-southeast1
   project: project-435400
-  enableAutopilot: true
-  releaseChannel: stable
+---
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: MachinePool
+metadata:
+  name: prod
+  namespace: capi-manager
+spec:
+  clusterName: prod
+  template:
+    spec:
+      clusterName: prod
+      bootstrap:
+        dataSecretName: ""
+      infrastructureRef:
+        apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+        kind: GCPManagedMachinePool
+        name: prod
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: GCPManagedMachinePool
+metadata:
+  name: prod
+  namespace: capi-manager
+spec:
+  nodeLocations: ["australia-southeast1-a"]
+  diskSizeGb: 100
+  machineType: e2-medium
+  scaling:
+    enableAutoscaling: true
+    locationPolicy: balanced
+    maxCount: 3
+    minCount: 0
 ---
 apiVersion: addons.cluster.x-k8s.io/v1alpha1
 kind: HelmChartProxy
 metadata:
-  name: argocd-dev
+  name: argocd-prod
   namespace: capi-manager
 spec:
   clusterSelector:
