@@ -19,7 +19,7 @@ spec:
             requests:
               cpu: 100m
               ephemeral-storage: 1Gi
-              memory: 100Mi        
+              memory: 103Mi        
   destination:
     server: "https://kubernetes.default.svc"
     namespace: argocd
