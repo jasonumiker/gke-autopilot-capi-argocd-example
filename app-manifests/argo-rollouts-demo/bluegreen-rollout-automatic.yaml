@@ -56,14 +56,18 @@ spec:
         templates:
         - templateName: success-rate
         args:
-        - url_map_name: k8s2-um-1cf9hwd1-default-bluegreen-demo-preview-cn1eress
-        - project_id: project-435400
+        - name: url_map_name
+          value: k8s2-um-1cf9hwd1-default-bluegreen-demo-preview-cn1eress
+        - name: project_id
+          value: project-435400
       postPromotionAnalysis:
         templates:
         - templateName: success-rate
         args:
-        - url_map_name: k8s2-um-1cf9hwd1-default-bluegreen-demo-94bd5pw1
-        - project_id: project-435400
+        - name: url_map_name
+          value: k8s2-um-1cf9hwd1-default-bluegreen-demo-94bd5pw1
+        - name: project_id
+          value: project-435400
       previewReplicaCount: 1
       autoPromotionEnabled: true
       autoPromotionSeconds: 1
