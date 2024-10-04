@@ -56,12 +56,12 @@ spec:
       resources:
         requests:
           cpu: 50m
-          memory: 104Mi
+          memory: 72Mi
     repoServer:
       resources:
         requests:
           cpu: 50m
-          memory: 52Mi
+          memory: 72Mi
     applicationSet:
       resources:
         requests:
@@ -76,12 +76,12 @@ spec:
       resources:
         requests:
           cpu: 50m
-          memory: 104Mi
+          memory: 200Mi
     dex:
       resources:
         requests:
           cpu: 50m
-          memory: 52Mi
+          memory: 62Mi
     redis:
       resources:
         requests:
