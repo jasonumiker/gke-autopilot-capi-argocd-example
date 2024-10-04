@@ -52,43 +52,38 @@ spec:
     server:
       resources:
         requests:
-          cpu: 100m
-          memory: 100Mi
-        limits:
-          cpu: 1
-          memory: 1Gi
+          cpu: 50m
+          memory: 104Mi
     repoServer:
       resources:
         requests:
-          cpu: 100m
-          memory: 100Mi
-        limits:
-          cpu: 1
-          memory: 1Gi
+          cpu: 50m
+          memory: 52Mi
     applicationSet:
       resources:
         requests:
-          cpu: 100m
-          memory: 100Mi
-        limits:
-          cpu: 1
-          memory: 1Gi
+          cpu: 50m
+          memory: 52Mi
     notifications:
       resources:
         requests:
-          cpu: 100m
-          memory: 100Mi
-        limits:
-          cpu: 1
-          memory: 1Gi
+          cpu: 50m
+          memory: 52Mi
     controller:
       resources:
         requests:
-          cpu: 100m
-          memory: 100Mi
-        limits:
-          cpu: 1
-          memory: 1Gi
+          cpu: 50m
+          memory: 104Mi
+    dex:
+      resources:
+        requests:
+          cpu: 50m
+          memory: 52Mi
+    redis:
+      resources:
+        requests:
+          cpu: 50m
+          memory: 52Mi
   options:
     waitForJobs: true
     wait: true
