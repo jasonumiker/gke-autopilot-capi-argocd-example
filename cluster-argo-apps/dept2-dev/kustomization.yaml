@@ -5,4 +5,3 @@ metadata:
 
 resources:
 - ../../argo-apps/argo-rollouts
-- ../../argo-apps/argo-rollouts-demo
