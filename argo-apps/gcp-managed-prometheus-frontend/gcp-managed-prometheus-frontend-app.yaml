@@ -1,13 +1,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argo-rollouts-demo
+  name: gcp-managed-prometheus-frontend
 spec:
   project: default
   source:
     repoURL: https://github.com/jasonumiker/gke-autopilot-capi-argocd-example
     targetRevision: HEAD
-    path: app-manifests/argo-rollouts-demo
+    path: app-manifests/gcp-managed-prometheus-frontend
   destination:
     server: https://kubernetes.default.svc
     namespace: default
