@@ -10,6 +10,9 @@ https://medium.com/@jason-umiker/automatic-rollback-of-your-gitops-with-argo-rol
 
 You have a choice - do you want to run the Cluster API server locally (in my case via the Kubernetes built-in to Docker Desktop on my laptop) or in the cloud. Regardless of which one you choose I still bootstrapped the one running in the cloud with the docker-desktop one on my laptop - so the question is do you just launch that one this way or do you launch all of them.
 
+### Cost of running this in GCP
+If you use Cluster API on your laptop (via Docker Desktop - instead of spinning up capi-manager-prod) and deploy a single cluster (e.g. dept1-dev) via GKE Autopilot then I have this down to under 1 CPI and 1GB of RAM in the example - so it should cost less than $5/day. In my case I have $1000 in credits from [Google Cloud Innovators Plus](https://cloud.google.com/innovators/innovatorsplus) but you also can sign up for a free trial worth $300 for 90 days - in which case it'll be free.
+
 ### Forking the git repo
 You want to fork the git repo on GitHub https://github.com/jasonumiker/gke-autopilot-capi-argocd-example. Just go to that and click the Fork button.
 
@@ -77,3 +80,8 @@ There is a script in `app-manifests/gcp-managed-prometheus-frontend` called `set
 
 The `dept1-dev` cluster should have already deployed gcp-managed-prometheus-frontend whose service account should now be enabled for the access it needs by that script.
 
+The next thing you need to do is update `app-manifests/argo-rollouts-demo/bluegreen-rollout-automatic.yaml` with your own `url_map_name`s and project ids. 
+
+You can get these from the GKE console by looking for the annotation `ingress.kubernetes.io/url-map` on the Ingresses:
+1. Run `kubectl describe ingress bluegreen-demo-preview` for the prePromotionAnalysis
+1. Run `kubectl describe ingress bluegreen-demo` for the postPromotionAnalysis
