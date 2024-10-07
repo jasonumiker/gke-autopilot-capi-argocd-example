@@ -16,8 +16,8 @@ spec:
           kind: Ingress
           name: ingress
         patch: |-
-          - op: replace
-            path: "/metadata/annotations"
+          - op: add
+            path: /metadata/annotations
             value: |-
               kubernetes.io/ingress.global-static-ip-name: "gke-ingress"
               networking.gke.io/managed-certificates: "www-jasonumiker-com"
