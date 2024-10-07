@@ -4,4 +4,4 @@ metadata:
   name: argo-rollouts-demo
 
 resources:
-- argo-rollouts-demo-app.yaml
+- ingress-demo-app.yaml
