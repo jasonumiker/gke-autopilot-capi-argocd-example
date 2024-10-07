@@ -93,8 +93,10 @@ There is a script in `app-manifests/gcp-managed-prometheus-frontend` called `set
 
 The `dept1-dev` cluster should have already deployed gcp-managed-prometheus-frontend whose service account should now be enabled for the access it needs by that script.
 
-The next thing you need to do is update `app-manifests/argo-rollouts-demo/bluegreen-rollout-automatic.yaml` with your own `url_map_name`s and project ids. 
+The next thing you need to do is update `cluster-argo-apps/dept1-dev/argo-rollouts-demo/argo-rollouts-demo-app.yaml` with your own `url_map_name`s and project ids. 
 
 You can get these from the GKE console by looking for the annotation `ingress.kubernetes.io/url-map` on the Ingresses:
 1. Run `kubectl describe ingress bluegreen-demo-preview` for the prePromotionAnalysis
 1. Run `kubectl describe ingress bluegreen-demo` for the postPromotionAnalysis
+
+NOTE: argo-rollouts-demo defaults to a manual Argo Rollouts promotion because it needs these url-maps and a project ID etc. And, since they may vary by cluster, we are using a Kustomize patch to parameterise them here. That lives in the folder for that cluster as it is cluster-specific.
