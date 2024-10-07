@@ -6,5 +6,5 @@ metadata:
 resources:
 - ../../argo-apps/argo-rollouts
 - ../../argo-apps/gcp-managed-prometheus-frontend
-- ../../argo-apps/argo-rollouts-demo
 - ../../argo-apps/ingress-demo
+- ./argo-rollouts-demo
