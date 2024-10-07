@@ -22,7 +22,7 @@ patches:
   patch: |-
     - op: add
       path: /spec/source/kustomize
-      value: |-
+      value:
         patches:
         - target:
             group: networking.k8s.io
@@ -43,11 +43,11 @@ patches:
     group: argoproj.io
     version: v1alpha1
     kind: Application
-    name: ingress-demo
+    name: argo-rollouts-demo
   patch: |-
     - op: add
       path: /spec/source/kustomize
-      value: |-
+      value:
         patches:
         - target:
             group: argoproj.io
