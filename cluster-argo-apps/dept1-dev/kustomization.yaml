@@ -11,7 +11,6 @@ resources:
 - ../../argo-apps/gcp-managed-prometheus-frontend
 - ../../argo-apps/argo-rollouts-demo
 - ../../argo-apps/ingress-demo
-- ../../argo-apps/ingress-demo
 - ./www-jasonumiker-com-managed-cert
 
 patches:
