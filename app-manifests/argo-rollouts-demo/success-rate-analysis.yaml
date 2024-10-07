@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: success-rate
+spec:
+  args:
+  - name: url_map_name
+  - name: project_id
+  metrics:
+  - name: success-rate
+    interval: 60s
+    count: 5
+    successCondition: result[0] >= 0.95
+    provider:
+      prometheus:
+        address: http://frontend.default.svc.cluster.local:9090
+        query: sum(irate(loadbalancing_googleapis_com:https_request_count{monitored_resource="https_lb_rule",url_map_name="{{args.url_map_name}}",project_id="{{args.project_id}}",response_code!="500"}[5m])) / sum(irate(loadbalancing_googleapis_com:https_request_count{monitored_resource="https_lb_rule",url_map_name="{{args.url_map_name}}",project_id="{{args.project_id}}"}[5m]))

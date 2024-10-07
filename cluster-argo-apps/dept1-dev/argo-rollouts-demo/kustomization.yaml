@@ -4,8 +4,4 @@ metadata:
   name: argo-rollouts-demo
 
 resources:
-- ../../../app-manifests/argo-rollouts-demo/bluegreen-service.yaml
-- ../../../app-manifests/argo-rollouts-demo/bluegreen-ingress.yaml
-- ../../../app-manifests/argo-rollouts-demo/bluegreen-preview-service.yaml
-- ../../../app-manifests/argo-rollouts-demo/bluegreen-preview-ingress.yaml
-- bluegreen-rollout-automatic.yaml
+- argo-rollouts-demo-app.yaml

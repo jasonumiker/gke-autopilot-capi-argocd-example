@@ -8,4 +8,6 @@ resources:
 - bluegreen-ingress.yaml
 - bluegreen-preview-service.yaml
 - bluegreen-preview-ingress.yaml
+- success-rate-analysis.yaml
 - bluegreen-rollout-manual.yaml
+

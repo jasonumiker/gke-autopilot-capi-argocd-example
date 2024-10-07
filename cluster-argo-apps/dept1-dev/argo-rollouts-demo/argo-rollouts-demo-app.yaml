@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argo-rollouts-demo
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/jasonumiker/gke-autopilot-capi-argocd-example
+    targetRevision: HEAD
+    path: app-manifests/argo-rollouts-demo
+    kustomzise:
+      patches:
+      - target:
+          group: argoproj.io
+          version: v1alpha1
+          kind: Rollout
+          name: bluegreen-demo
+        path: bluegreen-rollout-automatic.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
