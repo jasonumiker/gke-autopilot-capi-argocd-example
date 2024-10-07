@@ -6,7 +6,76 @@ metadata:
 resources:
 - ../../argo-apps/argo-rollouts
 - ../../argo-apps/gcp-managed-prometheus-frontend
-- ./argo-rollouts-demo
-#- ../../argo-apps/ingress-demo
+- ../../argo-apps/argo-rollouts-demo
+- ../../argo-apps/ingress-demo
+- ../../argo-apps/ingress-demo
 - ./www-jasonumiker-com-managed-cert
-- ./ingress-demo
+
+patches:
+- target:
+    group: argoproj.io
+    version: v1alpha1
+    kind: Application
+    name: ingress-demo
+  patch: |-
+    - op: add
+      path: /spec/source/kustomize
+      value: |-
+        patches:
+        - target:
+            group: networking.k8s.io
+            version: v1
+            kind: Ingress
+            name: ingress
+          patch: |-
+            - op: add
+              path: "/metadata/annotations/networking.gke.io~1managed-certificates"
+              value: "www-jasonumiker-com"
+            - op: add
+              path: "/metadata/annotations/kubernetes.io~1ingress.global-static-ip-name"
+              value: "gke-ingress"
+            - op: add
+              path: "/metadata/annotations/kubernetes.io~1ingress.allow-http"
+              value: "false"
+- target:
+    group: argoproj.io
+    version: v1alpha1
+    kind: Application
+    name: ingress-demo
+  patch: |-
+    - op: add
+      path: /spec/source/kustomize
+      value: |-
+        patches:
+        - target:
+            group: argoproj.io
+            version: v1alpha1
+            kind: Rollout
+            name: bluegreen-demo
+          patch: |-
+            - op: replace
+              path: /spec/strategy/blueGreen
+              value: |-
+                activeService: bluegreen-demo
+                previewService: bluegreen-demo-preview
+                scaleDownDelaySeconds: 300
+                prePromotionAnalysis:
+                  templates:
+                  - templateName: success-rate
+                  args:
+                  - name: url_map_name
+                    value: k8s2-um-1cf9hwd1-default-bluegreen-demo-preview-cn1eress
+                  - name: project_id
+                    value: project-435400
+                postPromotionAnalysis:
+                  templates:
+                  - templateName: success-rate
+                  args:
+                  - name: url_map_name
+                    value: k8s2-um-1cf9hwd1-default-bluegreen-demo-94bd5pw1
+                  - name: project_id
+                    value: project-435400
+                previewReplicaCount: 1
+                autoPromotionEnabled: true
+                autoPromotionSeconds: 1
+                abortScaleDownDelaySeconds: 300
