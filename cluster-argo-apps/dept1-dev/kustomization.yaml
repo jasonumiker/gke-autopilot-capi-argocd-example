@@ -57,7 +57,7 @@ patches:
           patch: |-
             - op: replace
               path: /spec/strategy/blueGreen
-              value: |-
+              value:
                 activeService: bluegreen-demo
                 previewService: bluegreen-demo-preview
                 scaleDownDelaySeconds: 300
