@@ -17,13 +17,12 @@ spec:
           kind: Ingress
           name: ingress
         patch: |-
-          - op: replace
-            path: /metadata/annotations
-            value: |-
-              kubernetes.io~1ingress.global-static-ip-name: "gke-ingress"
-              networking.gke.io~1managed-certificates: "www-jasonumiker-com"
-              kubernetes.io~1ingress.allow-http: "false"
-              kubernetes.io~1ingress.class: "gce"
+          - op: add
+            path: "/metadata/annotations/networking.gke.io~1managed-certificates"
+            value: "www-jasonumiker-com"
+          - op: add
+            path: "/metadata/annotations/kubernetes.io~1ingress.allow-http"
+            value: "www-jasonumiker-com"
   destination:
     server: https://kubernetes.default.svc
     namespace: default
