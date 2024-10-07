@@ -13,9 +13,9 @@ metadata:
   name: ingress
   namespace: default
   annotations:
-    kubernetes.io/ingress.global-static-ip-name: "gke-ingress"
-    #    networking.gke.io/managed-certificates: "www-jasonumiker-com"
-    #    kubernetes.io/ingress.allow-http: "false"
+    #kubernetes.io/ingress.global-static-ip-name: "gke-ingress"
+    #networking.gke.io/managed-certificates: "www-jasonumiker-com"
+    #kubernetes.io/ingress.allow-http: "false"
     kubernetes.io/ingress.class: "gce"
 spec:
   rules:

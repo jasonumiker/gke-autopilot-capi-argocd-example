@@ -21,8 +21,11 @@ spec:
             path: "/metadata/annotations/networking.gke.io~1managed-certificates"
             value: "www-jasonumiker-com"
           - op: add
+            path: "/metadata/annotations/kubernetes.io~1ingress.global-static-ip-name"
+            value: "gke-ingress"
+          - op: add
             path: "/metadata/annotations/kubernetes.io~1ingress.allow-http"
-            value: "www-jasonumiker-com"
+            value: "false"
   destination:
     server: https://kubernetes.default.svc
     namespace: default
