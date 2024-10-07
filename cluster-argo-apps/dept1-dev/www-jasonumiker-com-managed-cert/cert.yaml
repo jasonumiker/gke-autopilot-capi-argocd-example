@@ -1,0 +1,8 @@
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: www-jasonumiker-com
+  namespace: default
+spec:
+  domains:
+  - www.jasonumiker.com

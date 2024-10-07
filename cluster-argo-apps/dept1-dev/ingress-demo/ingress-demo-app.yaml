@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argo-rollouts-demo
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/jasonumiker/gke-autopilot-capi-argocd-example
+    targetRevision: HEAD
+    path: app-manifests/ingress-demo
+    kustomize:
+      patches:
+      - target:
+          group: networking.k8s.io
+          version: v1
+          kind: Ingress
+          name: ingress
+        patch: |-
+          - op: add
+            path: "/metadata/annotations/networking.gke.io/managed-certificates"
+            value: "www-jasonumiker-com"
+          - op: add
+            path: "/metadata/annotations/kubernetes.io/ingress.allow-http"
+            value: "false"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false

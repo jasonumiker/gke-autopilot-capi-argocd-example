@@ -6,5 +6,6 @@ metadata:
 resources:
 - ../../argo-apps/argo-rollouts
 - ../../argo-apps/gcp-managed-prometheus-frontend
-- ../../argo-apps/ingress-demo
 - ./argo-rollouts-demo
+- ./www-jasonumiker-com-managed-cert
+- ./ingress-demo
