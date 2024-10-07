@@ -7,5 +7,6 @@ resources:
 - ../../argo-apps/argo-rollouts
 - ../../argo-apps/gcp-managed-prometheus-frontend
 - ./argo-rollouts-demo
+#- ../../argo-apps/ingress-demo
 - ./www-jasonumiker-com-managed-cert
 - ./ingress-demo
