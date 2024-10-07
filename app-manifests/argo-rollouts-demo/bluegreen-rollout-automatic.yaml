@@ -31,6 +31,7 @@ spec:
     blueGreen:
       activeService: bluegreen-demo
       previewService: bluegreen-demo-preview
+      scaleDownDelaySeconds: 300
       prePromotionAnalysis:
         templates:
         - templateName: success-rate
@@ -50,5 +51,4 @@ spec:
       previewReplicaCount: 1
       autoPromotionEnabled: true
       autoPromotionSeconds: 1
-      scaleDownDelaySeconds: 30
-      abortScaleDownDelaySeconds: 30
+      abortScaleDownDelaySeconds: 300
