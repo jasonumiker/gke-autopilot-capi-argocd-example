@@ -69,6 +69,19 @@ If you deployed the capi-manager-prod into GCP with Argo CD there you would:
 Or, if you are using docker-desktop direcltly:
 1. Run `kubectl apply -k clusters/dept2 --context docker-desktop` in the project's base directory to get it to deploy that cluster as well
 
+## Connecting to the Argo CD Dashboard
+
+1. Open the GKE Console
+1. Go to Gateways, Services & Ingress
+1. Go to the Services Tab
+1. Click on `argo-cd-argocd-server`
+1. Scroll to the bottom and click on the Port Forwarding button next to the https port
+1. Copy and paste that command into your terminal where gcloud is already signed in as you
+
+This will be forwarding port 443 on this service to https://localhost:8080 on your machine
+
+The username is admin and the password is stored in a K8s secret. You can retrieve that by running the script I set up in `capi-init/retrieve-argo-password.sh`
+
 ## Finishing setup of up the Argo Rollouts Example
 
 Argo Rollouts can't query GCP's Managed Prometheus directly. Instead we need to run their frontend service with a service account that has the rights to as a sort of proxy. This is documented here - https://cloud.google.com/stackdriver/docs/managed-prometheus/query.

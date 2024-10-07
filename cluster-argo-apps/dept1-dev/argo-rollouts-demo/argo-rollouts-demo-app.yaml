@@ -15,7 +15,7 @@ spec:
           version: v1alpha1
           kind: Rollout
           name: bluegreen-demo
-        path: bluegreen-rollout-automatic.yaml
+        path: cluster-argo-apps/dept1-dev/argo-rollouts-demo/bluegreen-rollout-automatic.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: default
