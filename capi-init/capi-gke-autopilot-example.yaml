@@ -53,7 +53,7 @@ spec:
       resources:
         requests:
           cpu: 50m
-          memory: 72Mi
+          memory: 100Mi
     repoServer:
       resources:
         requests:
@@ -73,7 +73,7 @@ spec:
       resources:
         requests:
           cpu: 50m
-          memory: 200Mi
+          memory: 225Mi
     dex:
       resources:
         requests:
