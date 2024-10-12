@@ -10,9 +10,35 @@ resources:
 - ../../argo-apps/argo-rollouts
 - ../../argo-apps/gcp-managed-prometheus-frontend
 - ../../argo-apps/argo-rollouts-demo
+- ../../argo-apps/ingress-demo
 - ./www-jasonumiker-com-managed-cert
 
 patches:
+- target:
+    group: argoproj.io
+    version: v1alpha1
+    kind: Application
+    name: ingress-demo
+  patch: |-
+    - op: add
+      path: /spec/source/kustomize
+      value:
+        patches:
+        - target:
+            group: networking.k8s.io
+            version: v1
+            kind: Ingress
+            name: ingress
+          patch: |-
+            - op: add
+              path: "/metadata/annotations/networking.gke.io~1managed-certificates"
+              value: "www-jasonumiker-com"
+            - op: add
+              path: "/metadata/annotations/kubernetes.io~1ingress.global-static-ip-name"
+              value: "gke-ingress"
+            - op: add
+              path: "/metadata/annotations/kubernetes.io~1ingress.allow-http"
+              value: "false"
 - target:
     group: argoproj.io
     version: v1alpha1
