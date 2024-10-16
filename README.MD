@@ -25,7 +25,8 @@ This assumes you are doing this on either a Windows machine with both Docker Des
 1. Install Docker Desktop - https://www.docker.com/products/docker-desktop/
 1. (If on Windows) Install Ubuntu on WSL2 - https://documentation.ubuntu.com/wsl/en/latest/guides/install-ubuntu-wsl2/
 1. Install homebrew (if you don't have it already) - https://brew.sh/
-1. Run `brew install clusterctl helm k9s kubectl-argo-rollouts kubernetes-cli kustomize`
+1. Run `brew install clusterctl helm k9s kubernetes-cli kustomize`
+1. Run `brew install argoproj/tap/kubectl-argo-rollouts`
 1. Open the Docker Desktop Dashboard and click on the settings/gear menu
 1. Go to Kubernetes on the left and Enable it
 1. (If on Windows) Go to Resources then WSL ingegration and enable your WSL distro
