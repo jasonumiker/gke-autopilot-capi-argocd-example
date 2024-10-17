@@ -72,3 +72,7 @@ spec:
             - --log-format=json
             - --registry=txt
             - --txt-owner-id=my-identifier
+          resources:
+            requests:
+              cpu: 50m
+              memory: 52Mi
