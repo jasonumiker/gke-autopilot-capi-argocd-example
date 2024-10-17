@@ -11,6 +11,7 @@ resources:
 - ../../argo-apps/gcp-managed-prometheus-frontend
 - ../../argo-apps/argo-rollouts-demo
 - ./www-jasonumiker-com-managed-cert
+- ../../argo-apps/external-dns
 
 patches:
 - target:
