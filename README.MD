@@ -101,3 +101,9 @@ You can get these from the GKE console by looking for the annotation `ingress.ku
 1. Run `kubectl describe ingress bluegreen-demo` for the postPromotionAnalysis
 
 NOTE: argo-rollouts-demo defaults to a manual Argo Rollouts promotion because it needs these url-maps and a project ID etc. And, since they may vary by cluster, we are using a Kustomize patch to parameterise them here. That lives in the folder for that cluster as it is cluster-specific.
+
+## Finishing setup of external-dns
+
+External-dns requires creation of a workload identity in order to have access to change Cloud DNS. There is a script that will set that up for you in `app-manifests/external-dns/create-workload-identity.sh`.
+
+You'll need to edit the variables on top and then run that script in order for external-dns to function properly.
