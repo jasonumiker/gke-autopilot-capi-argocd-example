@@ -73,7 +73,7 @@ spec:
       resources:
         requests:
           cpu: 50m
-          memory: 225Mi
+          memory: 328Mi
     dex:
       resources:
         requests:
