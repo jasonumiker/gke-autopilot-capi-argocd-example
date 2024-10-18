@@ -59,3 +59,28 @@ patches:
                 autoPromotionEnabled: true
                 autoPromotionSeconds: 1
                 abortScaleDownDelaySeconds: 300
+- target:
+    group: argoproj.io
+    version: v1alpha1
+    kind: Application
+    name: ingress-demo
+  patch: |-
+    - op: add
+      path: /spec/source/kustomize
+      value:
+        patches:
+        - target:
+            group: networking.k8s.io
+            version: v1
+            kind: Ingress
+            name: ingress
+          patch: |-
+            - op: add
+              path: "/metadata/annotations/networking.gke.io~1managed-certificates"
+              value: "www-jasonumiker-com"
+            - op: add
+              path: "external-dns.alpha.kubernetes.io/hostname"
+              value: "www.jasonumiker.com"
+            - op: add
+              path: "/metadata/annotations/kubernetes.io~1ingress.allow-http"
+              value: "false"
