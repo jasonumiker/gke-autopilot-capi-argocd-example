@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 kubectl create secret \
 generic gcp-secret \
 -n crossplane-system \

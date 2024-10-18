@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 export PROJECT_NUMBER=700579028093
 export PROJECT_ID=project-435400
 export NAMESPACE_NAME=external-dns
