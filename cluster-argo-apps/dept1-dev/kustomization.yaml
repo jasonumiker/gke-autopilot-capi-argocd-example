@@ -12,6 +12,8 @@ resources:
 - ../../argo-apps/argo-rollouts-demo
 - ./www-jasonumiker-com-managed-cert
 - ../../argo-apps/external-dns
+- ../../argo-apps/crossplane
+- ../../argo-apps/cloudnative-pg
 
 patches:
 - target:
