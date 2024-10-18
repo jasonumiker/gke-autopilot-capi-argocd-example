@@ -15,16 +15,12 @@ spec:
           requests:
             cpu: 50m
             memory: 52Mi
-          limits:
-            cpu: ""
-            memory: ""
+          limits: null
         resourcesRBACManager:
           requests:
             cpu: 50m
             memory: 52Mi
-          limits:
-            cpu: ""
-            memory: ""
+          limits: null
   destination:
     server: "https://kubernetes.default.svc"
     namespace: crossplane-system
