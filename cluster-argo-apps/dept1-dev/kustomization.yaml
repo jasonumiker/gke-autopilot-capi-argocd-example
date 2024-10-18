@@ -12,7 +12,6 @@ resources:
 - ../../argo-apps/argo-rollouts-demo
 - ./www-jasonumiker-com-managed-cert
 - ../../argo-apps/external-dns
-- ../../argo-apps/crossplane
 
 patches:
 - target:
