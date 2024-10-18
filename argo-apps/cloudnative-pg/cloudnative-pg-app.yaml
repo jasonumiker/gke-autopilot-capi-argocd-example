@@ -5,9 +5,9 @@ metadata:
 spec:
   project: default
   source:
-    chart: cnpg
+    chart: cloudnative-pg
     repoURL: https://cloudnative-pg.github.io/charts
-    targetRevision: 0.22.0
+    targetRevision: 0.22.1
     helm:
       releaseName: cloudnative-pg
       values: |
