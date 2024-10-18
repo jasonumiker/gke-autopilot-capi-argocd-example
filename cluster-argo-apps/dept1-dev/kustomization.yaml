@@ -79,7 +79,7 @@ patches:
               path: "/metadata/annotations/networking.gke.io~1managed-certificates"
               value: "www-jasonumiker-com"
             - op: add
-              path: "external-dns.alpha.kubernetes.io/hostname"
+              path: "/metadata/annotations/external-dns.alpha.kubernetes.io~hostname"
               value: "www.jasonumiker.com"
             - op: add
               path: "/metadata/annotations/kubernetes.io~1ingress.allow-http"
