@@ -14,7 +14,7 @@ spec:
         resourcesCrossplane:
           requests:
             cpu: 50m
-            memory: 52Mi
+            memory: 100Mi
           limits: null
         resourcesRBACManager:
           requests:

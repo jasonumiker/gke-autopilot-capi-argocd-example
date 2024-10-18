@@ -1,12 +1,3 @@
-apiVersion: pkg.crossplane.io/v1
-kind: Provider
-metadata:
-  name: provider-gcp-storage
-spec:
-  package: xpkg.upbound.io/upbound/provider-gcp-storage:v1.8.3
-  runtimeConfigRef:
-    name: requests
----
 apiVersion: pkg.crossplane.io/v1beta1
 kind: DeploymentRuntimeConfig
 metadata:
@@ -23,3 +14,21 @@ spec:
                 requests:
                   cpu: 50m
                   memory: 52Mi
+---
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: upbound-provider-family-gcp
+spec:
+  package: xpkg.upbound.io/upbound/provider-family-gcp:v1.8.3
+  runtimeConfigRef:
+    name: requests
+---
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-gcp-storage
+spec:
+  package: xpkg.upbound.io/upbound/provider-gcp-storage:v1.8.3
+  runtimeConfigRef:
+    name: requests
