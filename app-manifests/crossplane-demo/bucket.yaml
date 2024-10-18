@@ -1,0 +1,12 @@
+apiVersion: storage.gcp.upbound.io/v1beta1
+kind: Bucket
+metadata:
+  name: lawyitxmqbgd
+  namespace: crossplane-system
+  labels:
+    docs.crossplane.io/example: provider-gcp
+spec:
+  forProvider:
+    location: ASIA
+  providerConfigRef:
+    name: default

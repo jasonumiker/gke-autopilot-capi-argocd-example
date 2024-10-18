@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: crossplane
+spec:
+  project: default
+  source:
+    chart: crossplane
+    repoURL: https://charts.crossplane.io/stable
+    targetRevision: 1.17.1
+    helm:
+      releaseName: crossplane
+      values: |
+        resourcesCrossplane:
+          requests:
+            cpu: 50m
+            memory: 52Mi
+          limits:
+            cpu: ""
+            memory: ""
+        resourcesRBACManager:
+          requests:
+            cpu: 50m
+            memory: 52Mi
+          limits:
+            cpu: ""
+            memory: ""
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: crossplane-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
+    syncOptions:
+      - CreateNamespace=true
