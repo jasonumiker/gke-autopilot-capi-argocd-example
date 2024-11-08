@@ -87,7 +87,7 @@ The username is admin and the password is stored in a K8s secret. You can retrie
 
 Argo Rollouts can't query GCP's Managed Prometheus directly. Instead we need to run their frontend service with a service account that has the rights to as a sort of proxy. This is documented here - https://cloud.google.com/stackdriver/docs/managed-prometheus/query.
 
-There is a script in `app-manifests/gcp-managed-prometheus-frontend` called `setup-service-account.sh` that will help with that.
+There is a script in `app-manifests/prod/gcp-managed-prometheus-frontend` called `setup-service-account.sh` that will help with that.
 
 1. Edit `setup-service-account.sh` with your project ID
 1. Run `setup-service-account.sh` to create the service account and give the default service account in the default namespace in EKS access to that
@@ -104,6 +104,6 @@ NOTE: argo-rollouts-demo defaults to a manual Argo Rollouts promotion because it
 
 ## Finishing setup of external-dns
 
-External-dns requires creation of a workload identity in order to have access to change Cloud DNS. There is a script that will set that up for you in `app-manifests/external-dns/create-workload-identity.sh`.
+External-dns requires creation of a workload identity in order to have access to change Cloud DNS. There is a script that will set that up for you in `app-manifests/prod/external-dns/create-workload-identity.sh`.
 
 You'll need to edit the variables on top and then run that script in order for external-dns to function properly.

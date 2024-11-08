@@ -1,13 +1,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: crossplane-gcp-provider
+  name: ingress-demo
 spec:
   project: default
   source:
     repoURL: https://github.com/jasonumiker/gke-autopilot-capi-argocd-example
     targetRevision: HEAD
-    path: app-manifests/crossplane-gcp-provider
+    path: app-manifests/prod/ingress-demo
   destination:
     server: https://kubernetes.default.svc
     namespace: default

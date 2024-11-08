@@ -1,13 +1,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ingress-demo
+  name: argo-rollouts-demo
 spec:
   project: default
   source:
     repoURL: https://github.com/jasonumiker/gke-autopilot-capi-argocd-example
     targetRevision: HEAD
-    path: app-manifests/ingress-demo
+    path: app-manifests/prod/argo-rollouts-demo
   destination:
     server: https://kubernetes.default.svc
     namespace: default

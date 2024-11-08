@@ -7,7 +7,7 @@ spec:
   source:
     repoURL: https://github.com/jasonumiker/gke-autopilot-capi-argocd-example
     targetRevision: HEAD
-    path: app-manifests/gcp-managed-prometheus-frontend
+    path: app-manifests/prod/gcp-managed-prometheus-frontend
   destination:
     server: https://kubernetes.default.svc
     namespace: default

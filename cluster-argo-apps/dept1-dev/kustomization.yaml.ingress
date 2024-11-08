@@ -7,10 +7,10 @@ metadata:
   name: dept1-dev-workloads
 
 resources:
-- ../../argo-apps/argo-rollouts
-- ../../argo-apps/gcp-managed-prometheus-frontend
-- ../../argo-apps/argo-rollouts-demo
-- ../../argo-apps/ingress-demo
+- ../../argo-apps/prod/argo-rollouts
+- ../../argo-apps/prod/gcp-managed-prometheus-frontend
+- ../../argo-apps/prod/argo-rollouts-demo
+- ../../argo-apps/prod/ingress-demo
 - ./www-jasonumiker-com-managed-cert
 
 patches:
