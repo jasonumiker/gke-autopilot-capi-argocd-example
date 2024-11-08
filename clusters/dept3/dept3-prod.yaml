@@ -1,25 +1,25 @@
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: Cluster
 metadata:
-  name: dev
-  namespace: dept1
+  name: prod
+  namespace: dept3
   labels:
-    name: dept1-dev
+    name: dept3-prod
 spec:
   controlPlaneRef:
     apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
     kind: GCPManagedControlPlane
-    name: dev
+    name: prod
   infrastructureRef:
     apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
     kind: GCPManagedCluster
-    name: dev
+    name: prod
 ---
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: GCPManagedCluster
 metadata:
-  name: dev
-  namespace: dept1
+  name: prod
+  namespace: dept3
 spec:
   network:
     name: default
@@ -29,8 +29,8 @@ spec:
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: GCPManagedControlPlane
 metadata:
-  name: dev
-  namespace: dept1
+  name: prod
+  namespace: dept3
 spec:
   location: australia-southeast1
   project: project-435400
@@ -40,12 +40,12 @@ spec:
 apiVersion: addons.cluster.x-k8s.io/v1alpha1
 kind: HelmChartProxy
 metadata:
-  name: argocd-dev
-  namespace: dept1
+  name: argocd-prod
+  namespace: dept3
 spec:
   clusterSelector:
     matchLabels:
-      name: dept1-dev
+      name: dept3-prod
   repoURL: https://argoproj.github.io/argo-helm
   chartName: argo-cd
   releaseName: argo-cd
@@ -97,12 +97,12 @@ spec:
 apiVersion: addons.cluster.x-k8s.io/v1alpha1
 kind: HelmChartProxy
 metadata:
-  name: argocd-apps-dept1-dev
-  namespace: dept1
+  name: argocd-apps-dept3-prod
+  namespace: dept3
 spec:
   clusterSelector:
     matchLabels:
-      name: dept1-dev
+      name: dept3-prod
   repoURL: https://argoproj.github.io/argo-helm
   chartName: argocd-apps
   releaseName: argocd-apps
@@ -116,7 +116,7 @@ spec:
         project: default
         sources:
           - repoURL: https://github.com/jasonumiker/gke-autopilot-capi-argocd-example.git
-            path: cluster-argo-apps/dept1-dev
+            path: cluster-argo-apps/dept3-prod
             targetRevision: HEAD
         destination:
           server: https://kubernetes.default.svc

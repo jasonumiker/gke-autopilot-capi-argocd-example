@@ -1,0 +1,14 @@
+# You can remove the patches if you don't want to have an HTTPS ingress-demo 
+# or autoPromotion of argo-rollouts-demo. Otherwise you'll need to update them
+# with your environment details
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+metadata:
+  name: dept1-prod-workloads
+
+resources:
+- ../../argo-apps/prod/gcp-managed-prometheus-frontend
+- ../../argo-apps/prod/argo-rollouts
+- ../../argo-apps/prod/external-dns
+- ../../argo-apps/prod/crossplane
+- ../../argo-apps/prod/argo-rollouts-demo
