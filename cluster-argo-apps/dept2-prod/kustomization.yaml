@@ -7,3 +7,4 @@ resources:
 - ../../argo-apps/prod/gcp-managed-prometheus-frontend
 - ../../argo-apps/prod/argo-rollouts
 - ../../argo-apps/prod/external-dns
+- ../../argo-apps/prod/crossplane
