@@ -1,8 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 metadata:
-  name: dept1-clusters
+  name: dept2-clusters
 
 resources:
 - namespace.yaml
-- dept1-prod.yaml
+- dept2-prod.yaml
