@@ -4,5 +4,5 @@ metadata:
   name: crossplane
 
 resources:
-- crossplane-gcp-provider.yaml
 - gcp-provider-config.yaml
+- crossplane-gcp-provider.yaml
