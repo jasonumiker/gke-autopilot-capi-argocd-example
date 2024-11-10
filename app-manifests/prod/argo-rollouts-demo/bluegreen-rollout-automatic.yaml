@@ -36,16 +36,18 @@ spec:
         templates:
         - templateName: success-rate
         args:
+        # Find this in the Details of the Ingress in the GKE UI
         - name: url_map_name
-          value: k8s2-um-1cf9hwd1-default-bluegreen-demo-preview-cn1eress
+          value: k8s2-um-0v601exe-default-bluegreen-demo-preview-20nzgdyg
         - name: project_id
           value: project-435400
       postPromotionAnalysis:
         templates:
         - templateName: success-rate
         args:
+        # Find this in the Details of the Ingress in the GKE UI
         - name: url_map_name
-          value: k8s2-um-1cf9hwd1-default-bluegreen-demo-94bd5pw1
+          value: k8s2-um-0v601exe-default-bluegreen-demo-9l1rnwww
         - name: project_id
           value: project-435400
       previewReplicaCount: 1
