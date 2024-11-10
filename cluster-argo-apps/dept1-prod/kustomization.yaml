@@ -9,22 +9,22 @@ resources:
   - ../../argo-apps/prod/crossplane
 
 patches:
-  - target:
-      group: argoproj.io
-      version: v1alpha1
-      kind: Application
-      name: external-dns
-    patch: |-
-      - op: add
-        path: /spec/source/kustomize
-        value:
-          patches:
-          - target:
-              group: apps
-              version: v1
-              kind: Deployment
-              name: external-dns
-            patch: |-
+- target:
+    group: argoproj.io
+    version: v1alpha1
+    kind: Application
+    name: external-dns
+  patch: |-
+    - op: add
+      path: /spec/source/kustomize
+      value:
+        patches:
+        - target:
+            group: apps
+            version: v1
+            kind: Deployment
+            name: external-dns
+          patch: |-
             - op: add
               path: /spec/template/spec/containers/0/args/-
               value: - --domain-filter=jasonumiker.com
