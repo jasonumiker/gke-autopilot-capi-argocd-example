@@ -8,6 +8,9 @@ resources:
   - ../../argo-apps/prod/external-dns
   - ../../argo-apps/prod/crossplane
   - ../../argo-apps/prod/argo-rollouts-demo
+  - ../../argo-apps/prod/crossplane-demo
+  - ../../argo-apps/prod/ingress-demo
+  - ./www-jasonumiker-com-managed-cert
 
 patches:
 - target:
@@ -29,3 +32,28 @@ patches:
             - op: add
               path: /spec/template/spec/containers/0/args/-
               value: --domain-filter=jasonumiker.com
+- target:
+    group: argoproj.io
+    version: v1alpha1
+    kind: Application
+    name: ingress-demo
+  patch: |-
+    - op: add
+      path: /spec/source/kustomize
+      value:
+        patches:
+        - target:
+            group: networking.k8s.io
+            version: v1
+            kind: Ingress
+            name: ingress
+          patch: |-
+            - op: add
+              path: "/metadata/annotations/networking.gke.io~1managed-certificates"
+              value: "www-jasonumiker-com"
+            - op: add
+              path: "/metadata/annotations/external-dns.alpha.kubernetes.io~1hostname"
+              value: "www.jasonumiker.com"
+            - op: add
+              path: "/metadata/annotations/kubernetes.io~1ingress.allow-http"
+              value: "false"
