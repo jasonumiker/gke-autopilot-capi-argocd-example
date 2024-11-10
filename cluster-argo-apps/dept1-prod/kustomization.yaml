@@ -7,6 +7,7 @@ resources:
   - ../../argo-apps/prod/argo-rollouts
   - ../../argo-apps/prod/external-dns
   - ../../argo-apps/prod/crossplane
+  - ../../argo-apps/prod/argo-rollouts-demo
 
 patches:
 - target:
