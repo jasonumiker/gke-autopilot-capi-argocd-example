@@ -3,6 +3,9 @@ kind: ProviderConfig
 metadata:
   name: default
   namespace: crossplane-system
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   projectID: project-435400
   credentials:
