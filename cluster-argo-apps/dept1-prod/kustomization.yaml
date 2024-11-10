@@ -9,7 +9,6 @@ resources:
   - ../../argo-apps/prod/external-dns
   - ../../argo-apps/prod/crossplane
   - ../../argo-apps/prod/argo-rollouts-demo
-  - ../../argo-apps/prod/crossplane-demo
   - ../../argo-apps/prod/ingress-demo
   - ./www-jasonumiker-com-managed-cert
 
